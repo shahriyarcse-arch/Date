@@ -6,7 +6,9 @@ An interactive, romantic, and visually stunning web application for proposing a 
 
 The app features a playful escaping "No" button powered by spring physics, custom SVG icons throughout, an animated confetti celebration, background music, and a passcode-protected admin dashboard to track responses in real-time.
 
-**Tech Stack**: React 19 + Vite, Framer Motion, Supabase, Tailwind CSS
+**Tech Stack**: React 19 + Vite 8, Framer Motion, Supabase, Tailwind CSS, canvas-confetti
+
+**Live Demo**: [https://date-pearl-one.vercel.app](https://date-pearl-one.vercel.app)
 
 ---
 
@@ -21,6 +23,7 @@ The app features a playful escaping "No" button powered by spring physics, custo
 - **Dark Mode Support** — Automatically adapts to system color scheme
 - **Keyboard Accessible** — Full keyboard navigation with visible focus rings
 - **Admin Dashboard** — Passcode-protected view of all submitted responses with delete capability
+- **Real-time Updates** — Dashboard uses Supabase Realtime subscriptions (no polling)
 - **Responsive Design** — Works on mobile, tablet, and desktop
 - **Supabase Integration** — Real-time database for storing proposals
 
@@ -93,9 +96,24 @@ Create a `.env` file in the project root:
 ```env
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_ADMIN_PASSCODE=5040
 ```
 
 Restart the dev server after adding your keys.
+
+---
+
+## 🚢 Deploy to Vercel
+
+This project is deployed on Vercel. To deploy your own fork:
+
+1. Push to GitHub
+2. Import the repo on [vercel.com](https://vercel.com)
+3. Add environment variables in Vercel dashboard:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_ADMIN_PASSCODE`
+4. Deploy — Vercel auto-deploys on every push to `main`
 
 ---
 
@@ -125,14 +143,14 @@ src/
 
 ## 🎨 Design System
 
-The app uses a custom design system with:
+The app uses a custom glassmorphism design system with:
 
-- **Colors**: Rose/pink palette (`#DB2777` primary) with soft gradients
-- **Typography**: Varela Round (headings) + Nunito Sans (body)
-- **Glassmorphism**: Frosted glass containers with backdrop blur
-- **Dark Mode**: Full theme support via `prefers-color-scheme`
+- **Colors**: Rose/pink palette (`#E11D48` primary) with CSS custom properties
+- **Typography**: Poppins (headings) + Inter (body) via Google Fonts
+- **Glassmorphism**: Frosted glass containers with `backdrop-filter: blur`, semi-transparent borders
+- **Dark Mode**: Full theme support via `prefers-color-scheme` with separate token sets
 - **Animations**: Framer Motion spring physics, 150-400ms timing
-- **Icons**: Custom SVG icons (no emoji-as-icon anti-pattern)
+- **Icons**: Custom inline SVG icons throughout
 
 ---
 
