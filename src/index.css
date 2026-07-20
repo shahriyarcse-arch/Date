@@ -1093,6 +1093,370 @@ tr:hover {
    Responsive Adjustments
    ═══════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════
+   Dashboard — Modern Responsive Design
+   ═══════════════════════════════════════════════════ */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-error {
+  color: var(--destructive);
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  background: rgba(225, 29, 72, 0.06);
+  border-radius: 16px;
+  border: 1px solid rgba(225, 29, 72, 0.15);
+}
+
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 5rem 0;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin-icon {
+  display: inline-flex;
+  animation: spin 0.8s linear infinite;
+}
+
+.dashboard-empty {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.dashboard-empty h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.response-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+/* Desktop table */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Delete button modern */
+.delete-btn {
+  background: rgba(225, 29, 72, 0.08);
+  color: var(--destructive);
+  border: 1.5px solid rgba(225, 29, 72, 0.15);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  touch-action: manipulation;
+}
+
+.delete-btn:hover {
+  background: var(--destructive);
+  color: white;
+  border-color: var(--destructive);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+/* Table styling */
+.td-name {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.td-date {
+  font-weight: 800;
+}
+
+.td-time {
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.td-muted {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Mobile response cards */
+.response-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.response-card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 12px 30px rgba(219, 39, 119, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.card-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.card-name svg {
+  flex-shrink: 0;
+}
+
+.card-delete-btn {
+  background: rgba(225, 29, 72, 0.08);
+  border: none;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--destructive);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.card-delete-btn:hover {
+  background: var(--destructive);
+  color: white;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.card-field svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.card-footer {
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════
+   Step Progress Indicator — Modern Design
+   ═══════════════════════════════════════════════════ */
+
+.step-progress {
+  position: fixed;
+  top: clamp(0.6rem, 2vw, 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  border: 1.5px solid rgba(219, 39, 119, 0.12);
+  box-shadow: 0 8px 28px rgba(219, 39, 119, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.step-progress-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(219, 39, 119, 0.12);
+  transition: all 0.4s var(--ease-spring);
+  position: relative;
+}
+
+.step-dot.completed {
+  background: var(--secondary);
+  box-shadow: 0 0 8px rgba(244, 114, 182, 0.4);
+}
+
+.step-dot.active {
+  background: var(--primary);
+  width: 28px;
+  border-radius: 50px;
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.step-connector {
+  width: 16px;
+  height: 2px;
+  background: rgba(219, 39, 119, 0.12);
+  border-radius: 1px;
+  transition: background 0.4s var(--ease-out);
+}
+
+.step-connector.completed {
+  background: var(--secondary);
+}
+
+.step-label {
+  margin-left: 10px;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+.step-label strong {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* ═══════════════════════════════════════════════════
+   Responsive — Dashboard & Step Progress
+   ═══════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .dashboard-actions {
+    width: 100%;
+  }
+
+  .dashboard-actions .btn-no,
+  .dashboard-actions .btn-primary {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .dashboard-container {
+    padding: clamp(1.2rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .response-card {
+    padding: 1rem;
+  }
+
+  .step-progress {
+    padding: 0.4rem 1rem;
+  }
+
+  .step-connector {
+    width: 10px;
+  }
+
+  .step-dot.active {
+    width: 22px;
+  }
+}
+
 @media (max-width: 600px) {
   .btn-container {
     gap: 0.8rem;
@@ -1120,5 +1484,58 @@ tr:hover {
   }
   .btn-container {
     margin-top: 1rem;
+  }
+  .step-progress {
+    top: 0.3rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Dark mode for new dashboard elements */
+@media (prefers-color-scheme: dark) {
+  .response-card {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  .card-header {
+    border-bottom-color: var(--border);
+  }
+
+  .card-delete-btn {
+    background: rgba(225, 29, 72, 0.15);
+  }
+
+  .card-delete-btn:hover {
+    background: var(--destructive);
+    color: white;
+  }
+
+  .step-progress {
+    background: rgba(45, 18, 30, 0.85);
+    border-color: rgba(219, 39, 119, 0.18);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+  }
+
+  .step-dot {
+    background: rgba(219, 39, 119, 0.2);
+  }
+
+  .step-connector {
+    background: rgba(219, 39, 119, 0.2);
+  }
+
+  .step-connector.completed {
+    background: var(--secondary);
+  }
+
+  .dashboard-error {
+    background: rgba(225, 29, 72, 0.1);
+    border-color: rgba(225, 29, 72, 0.2);
+  }
+
+  .delete-btn {
+    background: rgba(225, 29, 72, 0.12);
+    border-color: rgba(225, 29, 72, 0.2);
   }
 }

@@ -601,40 +601,22 @@ export default function ProposalFlow({ customParams = {} }) {
         ))}
       </div>
 
-      {/* Step Progress Indicator — shows current step out of total */}
+      {/* Step Progress Indicator — Modern Design */}
       {step > 1 && step < 6 && (
-        <div style={{
-          position: 'fixed',
-          top: 'clamp(0.7rem, 2vw, 1rem)',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          background: 'rgba(255,255,255,0.75)',
-          backdropFilter: 'blur(10px)',
-          padding: '0.4rem 1rem',
-          borderRadius: '50px',
-          border: '1.5px solid rgba(219,39,119,0.12)',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-          zIndex: 1001,
-          fontFamily: 'var(--font-body)',
-          fontSize: 'clamp(0.75rem, 2vw, 0.85rem)',
-          fontWeight: 600,
-          color: 'var(--text-muted)',
-        pointerEvents: 'none',
-        }}>
-          {[2, 3, 4, 5].map(s => (
-            <div key={s} style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: step === s ? 'var(--primary)' : step > s ? 'var(--secondary)' : 'rgba(219,39,119,0.15)',
-              transition: 'all 0.3s ease',
-              boxShadow: step === s ? '0 0 8px var(--primary-glow)' : 'none',
-            }} />
-          ))}
-          <span style={{ marginLeft: '0.3rem', opacity: 0.6, fontSize: '0.7rem' }}>{step - 1}/4</span>
+        <div className="step-progress">
+          <div className="step-progress-track">
+            {[2, 3, 4, 5].map((s, i) => (
+              <React.Fragment key={s}>
+                <div className={`step-dot ${step === s ? 'active' : step > s ? 'completed' : ''}`} />
+                {i < 3 && (
+                  <div className={`step-connector ${step > s ? 'completed' : ''}`} />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+          <span className="step-label">
+            <strong>{step - 1}</strong>/4
+          </span>
         </div>
       )}
 
