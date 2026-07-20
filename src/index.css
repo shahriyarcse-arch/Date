@@ -445,10 +445,7 @@ h1 {
   font-size: clamp(1.8rem, 6vw, 2.6rem);
   line-height: 1.2;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #FDA4AF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
   letter-spacing: -0.5px;
   width: 100%;
 }
@@ -1049,6 +1046,14 @@ tr:hover {
 .global-footer a:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+}
+
+/* ── Inline Emoji Icons (modern SVG replacements) ── */
+.emoji-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 1px;
+  color: var(--primary);
 }
 
 /* ═══════════════════════════════════════════════════

@@ -212,6 +212,96 @@ const Icons = {
       <line x1="23" y1="9" x2="17" y2="15" />
       <line x1="17" y1="9" x2="23" y2="15" />
     </svg>
+  ),
+  // ── Modern Emoji Replacements (inline SVG icons) ──
+  EmojiHeart: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="emoji-icon">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+  ),
+  EmojiSparkles: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <path d="M12 3v1M12 20v1M3 12h1M20 12h1M5.9 5.9l.7.7M17.4 17.4l.7.7M17.4 6.6l-.7.7M6.6 17.4l-.7.7" />
+    </svg>
+  ),
+  EmojiWink: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="9" cy="10" r="1.5" />
+      <line x1="14" y1="10" x2="16.5" y2="10" />
+      <path d="M8 15c0 0 1.5 3 4 3s4-3 4-3" />
+    </svg>
+  ),
+  EmojiTearJoy: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 10c0 0 1-1 2-1s2 1 2 1" />
+      <path d="M12 10c0 0 1-1 2-1s2 1 2 1" />
+      <path d="M16 14c0 0-1.5 3-4 3s-4-3-4-3" />
+      <path d="M6 12c0 1 .5 1.5 1 1.5" />
+      <path d="M17 12c0 1-.5 1.5-1 1.5" />
+    </svg>
+  ),
+  EmojiSmirk: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="9" cy="10" r="1.5" />
+      <circle cx="15" cy="10" r="1.5" />
+      <path d="M16 14c0 0-1 3.5-4 3.5s-4-3.5-4-3.5" />
+      <line x1="18" y1="7.5" x2="16" y2="8.5" />
+    </svg>
+  ),
+  EmojiYum: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 10c0 0 1-1 2-1s2 1 2 1" />
+      <path d="M12 10c0 0 1-1 2-1s2 1 2 1" />
+      <path d="M8 15.5c1 1.5 3 2 4 2s3-.5 4-2" />
+      <path d="M13 14.5c0 0 .5 1.5 1 1.5s1-1.5 1-1.5" />
+    </svg>
+  ),
+  EmojiHeartFace: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 11c0 0 1-1.5 2-1.5s2 1.5 2 1.5" />
+      <path d="M12 11c0 0 1-1.5 2-1.5s2 1.5 2 1.5" />
+      <path d="M16 14.5c0 0-1.5 3-4 3s-4-3-4-3" />
+      <path d="M5 9c1-1 2-1.5 3-1" fill="currentColor" opacity="0.25" />
+      <path d="M19 9c-1-1-2-1.5-3-1" fill="currentColor" opacity="0.25" />
+    </svg>
+  ),
+  EmojiClock: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <circle cx="12" cy="13" r="8" />
+      <polyline points="12 9 12 13 15 15" />
+      <path d="M5 3L2 6" />
+      <path d="M19 3l3 6" />
+    </svg>
+  ),
+  EmojiCalendar: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  ),
+  EmojiPin: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+  EmojiBurger: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="emoji-icon">
+      <path d="M3 15h18" />
+      <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" />
+      <path d="M6 11c0-2 2-5 6-5s6 3 6 5" />
+      <path d="M5 11a1 1 0 0 1-1-1c0-1 1-3 2-3" />
+      <path d="M19 11a1 1 0 0 0 1-1c0-1-1-3-2-3" />
+      <circle cx="9" cy="14" r="1" fill="currentColor" opacity="0.3" />
+      <circle cx="15" cy="14" r="1" fill="currentColor" opacity="0.3" />
+    </svg>
   )
 };
 
@@ -557,8 +647,8 @@ export default function ProposalFlow({ customParams = {} }) {
              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
               <Icons.Heart />
             </div>
-             <h1>{senderName ? `Hey ${recipientName || 'beautiful'}... will you go on a date with ${senderName}? 💕` : 'Will you go on a date with me?'}</h1>
-             <p>{senderName ? `${senderName} has a perfect day planned for you two... 😉` : "I've got the perfect plan for us... just waiting for your yes 😉"}</p>
+             <h1>{senderName ? <>Hey {recipientName || 'beautiful'}... will you go on a date with {senderName}? <Icons.EmojiHeart /></> : 'Will you go on a date with me?'}</h1>
+             <p>{senderName ? <>{senderName} has a perfect day planned for you two... <Icons.EmojiWink /></> : <>I've got the perfect plan for us... just waiting for your yes <Icons.EmojiWink /></>}</p>
             
             <div className="btn-container" ref={btnContainerRef}>
               <motion.button 
@@ -604,7 +694,7 @@ export default function ProposalFlow({ customParams = {} }) {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
               <Icons.User />
             </div>
-             <h1>Yay! You made my day! 🥹</h1>
+             <h1>Yay! You made my day! <Icons.EmojiTearJoy /></h1>
              <p>Now tell me your name so I know what to call my date:</p>
             
             <input 
@@ -646,7 +736,7 @@ export default function ProposalFlow({ customParams = {} }) {
               <Icons.LocationPin />
             </div>
              <h1>Where should I take you?</h1>
-             <p>Pick our vibe for the perfect first date: ✨</p>
+             <p>Pick our vibe for the perfect first date: <Icons.EmojiSparkles /></p>
             
             <div className="options-grid">
               {locations.map((loc, idx) => (
@@ -678,8 +768,8 @@ export default function ProposalFlow({ customParams = {} }) {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
               <Icons.FoodFork />
             </div>
-             <h1>What are we eating? 😏</h1>
-             <p>Pick something delicious for our date: 😋</p>
+             <h1>What are we eating? <Icons.EmojiSmirk /></h1>
+             <p>Pick something delicious for our date: <Icons.EmojiYum /></p>
             
             <div className="options-grid">
               {foods.map((food, idx) => (
@@ -762,7 +852,7 @@ export default function ProposalFlow({ customParams = {} }) {
               <Icons.Calendar />
             </div>
              <h1>When's our date?</h1>
-             <p>Pick the perfect day and time: 🗓️</p>
+             <p>Pick the perfect day and time: <Icons.EmojiCalendar /></p>
 
             {/* Custom Calendar */}
             <div className="custom-calendar">
@@ -834,7 +924,7 @@ export default function ProposalFlow({ customParams = {} }) {
               disabled={!formData.date || !formData.time || isSubmitting}
               style={{ marginTop: '2.5rem' }}
             >
-              {isSubmitting ? 'Locking our date in...' : 'Lock In Our Date, Love! 💕'} <Icons.ShieldAlert />
+              {isSubmitting ? 'Locking our date in...' : <>Lock In Our Date, Love! <Icons.EmojiHeart /></>} <Icons.ShieldAlert />
             </motion.button>
           </motion.div>
           );
@@ -846,27 +936,27 @@ export default function ProposalFlow({ customParams = {} }) {
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
               <Icons.SuccessBadge />
             </div>
-             <h1>It's a Date! ❤️</h1>
+             <h1>It's a Date! <Icons.EmojiHeart /></h1>
              <p style={{ fontSize: '1.8rem', color: 'var(--primary)', fontWeight: 800, marginBottom: '1.5rem' }}>
                {senderName 
-                 ? `Can't wait to see you, ${formData.name}! ✨`
-                 : `I can't wait to see you, ${formData.name}! ✨`
+                 ? <>Can't wait to see you, {formData.name}! <Icons.EmojiSparkles /></>
+                 : <>I can't wait to see you, {formData.name}! <Icons.EmojiSparkles /></>
                }
              </p>
              <p style={{ fontSize: '1.5rem', lineHeight: '1.8' }}>
                Our plan:
                <br />
-               📍 <strong>{formData.location}</strong>
+               <Icons.EmojiPin /> <strong>{formData.location}</strong>
                <br />
-               🍔 <strong>{formData.food}</strong>
+               <Icons.EmojiBurger /> <strong>{formData.food}</strong>
                <br />
-               ⏰ <strong>{formData.date}</strong> at <strong>{formData.time}</strong>
+               <Icons.EmojiClock /> <strong>{formData.date}</strong> at <strong>{formData.time}</strong>
              </p>
               <div style={{ borderTop: '2px solid var(--card-border)', paddingTop: '2.5rem', marginTop: '2.5rem' }}>
                 <p style={{ fontSize: 'clamp(1rem, 3vw, 1.2rem)', fontStyle: 'italic', color: 'var(--text-muted)' }}>
                   {senderName 
-                    ? `See you soon! 🥰`
-                    : `See you soon, beautiful! 🥰`
+                    ? <>See you soon! <Icons.EmojiHeartFace /></>
+                    : <>See you soon, beautiful! <Icons.EmojiHeartFace /></>
                   }
                 </p>
 
