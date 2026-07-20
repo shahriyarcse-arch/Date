@@ -101,6 +101,24 @@ VITE_ADMIN_PASSCODE=5040
 
 Restart the dev server after adding your keys.
 
+> **Important**: `VITE_` env vars are embedded in the client-side JS bundle. Never use secrets (service keys, passwords) with the `VITE_` prefix. The Supabase anon key is safe to expose as long as Row Level Security (RLS) is enabled.
+
+---
+
+## 🔒 Security Considerations
+
+This is a personal/romantic project, not a production SaaS app. That said:
+
+- **Supabase credentials** (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) are in the client bundle — anyone inspecting the deployed site can see them
+- **Admin passcode** is checked client-side — it can be found in the JS source
+- **No RLS policies** are configured by default — anyone with the anon key can read/write data
+
+### If forking this project:
+1. Create your own Supabase project (free tier works)
+2. Use your own env variables, never share your `.env` file
+3. Consider enabling Supabase RLS policies if you want real security
+4. For production use, move the admin check to a server-side function
+
 ---
 
 ## 🚢 Deploy to Vercel
