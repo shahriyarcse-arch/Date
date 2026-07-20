@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../db';
 
@@ -89,12 +89,24 @@ export default function Dashboard({ onBack }) {
     }
   }, []);
 
-  // Fetch immediately when authenticated, and auto-refresh every 5s
+  // Fetch immediately when authenticated, and subscribe to realtime updates
   useEffect(() => {
     if (!isAuthenticated) return;
     fetchResponses();
-    const interval = setInterval(fetchResponses, 5000);
-    return () => clearInterval(interval);
+
+    // Subscribe to realtime INSERT/DELETE events
+    const channel = db.subscribeToResponses(
+      (newRow) => {
+        setResponses((prev) => [newRow, ...prev]);
+      },
+      (oldRow) => {
+        setResponses((prev) => prev.filter((r) => r.id !== oldRow.id));
+      }
+    );
+
+    return () => {
+      db.unsubscribe(channel);
+    };
   }, [isAuthenticated]);
 
   const handleDelete = async (id) => {

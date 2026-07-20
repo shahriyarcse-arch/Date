@@ -83,6 +83,38 @@ export const db = {
     return true;
   },
 
+  // Subscribe to realtime changes on the responses table
+  subscribeToResponses(onInsert, onDelete) {
+    if (!supabase) return null;
+
+    const channel = supabase
+      .channel('responses-realtime')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'responses' },
+        (payload) => {
+          if (onInsert) onInsert(payload.new);
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'DELETE', schema: 'public', table: 'responses' },
+        (payload) => {
+          if (onDelete) onDelete(payload.old);
+        }
+      )
+      .subscribe();
+
+    return channel;
+  },
+
+  // Unsubscribe from realtime channel
+  unsubscribe(channel) {
+    if (channel && supabase) {
+      supabase.removeChannel(channel);
+    }
+  },
+
   // Check if Supabase is configured and initialized
   isConfigured() {
     return supabase !== null;
