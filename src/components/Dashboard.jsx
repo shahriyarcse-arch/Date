@@ -58,27 +58,38 @@ export default function Dashboard({ onBack }) {
 
   const fetchResponses = async () => {
     setLoading(true);
-    const data = await db.getResponses();
-    setResponses(data);
+    setError('');
+    try {
+      const data = await db.getResponses();
+      setResponses(data);
+    } catch (err) {
+      console.error('Failed to fetch responses:', err);
+      setError('Failed to load responses. Check console for details.');
+    }
     setLoading(false);
   };
 
+  // Fetch immediately when authenticated, and auto-refresh every 5s
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchResponses();
-      const interval = setInterval(() => {
-        fetchResponses();
-      }, 5000);
-      return () => clearInterval(interval);
-    }
+    if (!isAuthenticated) return;
+    fetchResponses();
+    const interval = setInterval(fetchResponses, 5000);
+    return () => clearInterval(interval);
   }, [isAuthenticated]);
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this response?')) {
-      await db.deleteResponse(id);
-      fetchResponses();
+      try {
+        await db.deleteResponse(id);
+        fetchResponses();
+      } catch (err) {
+        console.error('Failed to delete response:', err);
+        setError('Failed to delete. Check console for details.');
+      }
     }
   };
+
+
 
   const pageMotion = {
     initial: { opacity: 0 },
@@ -159,9 +170,14 @@ export default function Dashboard({ onBack }) {
               </div>
             </div>
 
+            {error && (
+              <p style={{ color: 'var(--destructive)', marginTop: '1.5rem', fontSize: '1.1rem', textAlign: 'center', fontWeight: 600 }}>
+                {error}
+              </p>
+            )}
             {loading && responses.length === 0 ? (
               <p style={{ marginTop: '3rem', fontSize: '1.5rem', textAlign: 'center' }}>Loading responses...</p>
-            ) : responses.length === 0 ? (
+            ) : !error && responses.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '5rem 0' }}>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <Icons.Empty />
