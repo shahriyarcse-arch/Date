@@ -25,8 +25,8 @@ export default {
         ring: '#E11D48',
       },
       fontFamily: {
-        heading: ['Fredoka', 'sans-serif'],
-        body: ['Nunito', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
       },
     },
   },

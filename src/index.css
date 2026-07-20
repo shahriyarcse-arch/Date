@@ -666,7 +666,7 @@ label {
   background: rgba(255, 255, 255, 0.95);
   font-size: clamp(1rem, 3vw, 1.2rem);
   font-weight: 600;
-  color: #4A0520;
+  color: var(--text);
   caret-color: var(--primary);
   outline: none;
   font-family: var(--font-body);
@@ -689,7 +689,7 @@ label {
 }
 
 .input-field::placeholder {
-  color: #6B2D45;
+  color: var(--text-muted);
   opacity: 0.55;
   font-weight: 400;
 }
@@ -879,7 +879,7 @@ label {
 }
 
 .cal-disabled {
-  color: #d4c4c8;
+  color: var(--text-muted);
   cursor: not-allowed;
   opacity: 0.4;
 }

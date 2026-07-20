@@ -69,6 +69,8 @@ const Icons = {
   ),
 };
 
+const CORRECT_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE || '5040';
+
 export default function Dashboard({ onBack }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState('');
@@ -77,8 +79,6 @@ export default function Dashboard({ onBack }) {
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [supabaseStatus, setSupabaseStatus] = useState(null);
-
-  const CORRECT_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE || '5040';
 
   const handleLogin = (e) => {
     e.preventDefault();

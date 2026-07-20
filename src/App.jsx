@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProposalFlow from './components/ProposalFlow';
 import Dashboard from './components/Dashboard';
@@ -9,6 +9,7 @@ export default function App() {
   const [view, setView] = useState('proposal');
   const [params, setParams] = useState({ to: '', by: '', p: '' });
   const [resolveError, setResolveError] = useState('');
+  const timersRef = useRef([]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -20,7 +21,6 @@ export default function App() {
     setParams({ to: toParam, by: byParam, p: pParam });
 
     if (idParam) {
-      // Resolve short unique ID from the proposals table
       setView('resolving');
       db.getProposal(idParam).then(proposal => {
         if (proposal) {
@@ -34,19 +34,26 @@ export default function App() {
           setView('proposal');
         } else {
           setResolveError('Proposal link not found. It may have been deleted or the link is invalid.');
-          setTimeout(() => {
+          const t = setTimeout(() => {
             setView('proposal');
             window.history.replaceState(null, '', '/');
           }, 2500);
+          timersRef.current.push(t);
         }
       }).catch(() => {
         setResolveError('Failed to load proposal. Redirecting...');
-        setTimeout(() => {
+        const t = setTimeout(() => {
           setView('proposal');
           window.history.replaceState(null, '', '/');
         }, 2500);
+        timersRef.current.push(t);
       });
     }
+
+    return () => {
+      timersRef.current.forEach(clearTimeout);
+      timersRef.current = [];
+    };
   }, []);
 
   const showDashboard = () => setView('dashboard');

@@ -395,7 +395,7 @@ export default function ProposalFlow({ customParams = {} }) {
   // Generate floating background hearts
   useEffect(() => {
     const interval = setInterval(() => {
-      const id = Math.random();
+      const id = Date.now() + '-' + Math.random().toString(36).slice(2, 7);
       const newHeart = {
         id,
         left: Math.random() * 100 + 'vw',
@@ -503,32 +503,34 @@ export default function ProposalFlow({ customParams = {} }) {
   };
   const handleSubmit = async () => {
     // Rate limit check: Prevent submitting more than once every 3 minutes to stop spamming
-    const lastSubmit = localStorage.getItem('last_submit_timestamp');
-    const now = Date.now();
-    if (lastSubmit && (now - parseInt(lastSubmit, 10)) < 3 * 60 * 1000) {
-      alert("Hold on, beautiful! You've already locked in a date proposal. Let's wait a moment! 🥰");
-      return;
+    try {
+      const lastSubmit = localStorage.getItem('last_submit_timestamp');
+      const now = Date.now();
+      if (lastSubmit && (now - parseInt(lastSubmit, 10)) < 3 * 60 * 1000) {
+        alert("Hold on, beautiful! You've already locked in a date proposal. Let's wait a moment! 🥰");
+        return;
+      }
+
+      if (isSubmitting) return;
+      localStorage.setItem('last_submit_timestamp', now.toString());
+    } catch (e) {
+      // localStorage may be unavailable in private browsing — continue anyway
     }
 
-    if (isSubmitting) return;
-    localStorage.setItem('last_submit_timestamp', now.toString());
     setIsSubmitting(true);
     
-    // Optimistic UI update: Go to confirmation screen instantly!
-    setStep(6);
-    
     try {
-      // Save to Supabase in the background, tag with sender name for filtering
+      // Save to Supabase, tag with sender name for filtering
       const dataToSave = { ...formData };
       if (senderName) {
         dataToSave.created_by = senderName;
       }
       await db.saveResponse(dataToSave);
+      // Only show success screen AFTER save succeeds
+      setStep(6);
     } catch (err) {
-      console.error('Background network submit failed:', err);
-      // Optional: alert or handle background failure silently to not ruin the romantic moment,
-      // but showing a warning is safe. Let's log it.
-    } finally {
+      console.error('Submit failed:', err);
+      alert('Oops! Something went wrong. Please try again.');
       setIsSubmitting(false);
     }
   };
