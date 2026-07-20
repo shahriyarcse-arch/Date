@@ -20,11 +20,16 @@ The app features a playful escaping "No" button powered by spring physics, custo
 - **Confetti Celebration** — Fireworks effect on the final confirmation screen
 - **Background Music** — "Always With Me" flute version from Spirited Away, with mute toggle
 - **Animated Floating Hearts** — Ambient background decoration
+- **Step Progress Indicator** — Connected dots showing current step (2/4, 3/4, etc.)
+- **Back Navigation** — "← Back" button on each step to revise choices
+- **Short Shareable Links** — Generate unique short URLs (`?id=xxx`) to share with your special someone
+- **Personalized Greetings** — Custom recipient/sender names via URL params (`?to=Name&by=Name`)
+- **Rate Limiting** — 3-minute cooldown between submissions to prevent spam
 - **Dark Mode Support** — Automatically adapts to system color scheme
 - **Keyboard Accessible** — Full keyboard navigation with visible focus rings
 - **Admin Dashboard** — Passcode-protected view of all submitted responses with delete capability
 - **Real-time Updates** — Dashboard uses Supabase Realtime subscriptions (no polling)
-- **Responsive Design** — Works on mobile, tablet, and desktop
+- **Responsive Design** — Mobile card layout, desktop table layout
 - **Supabase Integration** — Real-time database for storing proposals
 
 ---
@@ -143,17 +148,40 @@ This project is deployed on Vercel. To deploy your own fork:
 
 ---
 
+## 📖 How to Use
+
+### Creating a Proposal
+1. Open the app — you'll see the landing page
+2. Enter your name (sender) and your special someone's name (recipient)
+3. Click "Let's Plan Our Date!" to start the flow
+4. Choose location, food, date, and time
+5. Click "Lock In Our Date, Love!" to submit
+
+### Sharing with Someone
+After creating a proposal, a **short unique link** is generated. Share this link:
+```
+https://your-domain.vercel.app/?id=abc123
+```
+
+The recipient sees a personalized proposal with their name. URL params:
+- `?to=RecipientName` — shows "Hey RecipientName..."
+- `?by=SenderName` — shows "will you go on a date with SenderName?"
+- `?id=xxx` — resolves a short link from the proposals table
+
+---
+
 ## 📁 Project Structure
 
 ```
 src/
-├── App.jsx                   # Root component with routing
+├── App.jsx                   # Root component with routing, URL param handling
 ├── main.jsx                  # Entry point
-├── index.css                 # Design system & all styles
-├── db.js                     # Supabase database client
+├── index.css                 # Design system, glassmorphism tokens, all styles
+├── db.js                     # Supabase client, CRUD, realtime subscriptions
+├── assets/                   # Static assets
 └── components/
-    ├── ProposalFlow.jsx      # Interactive proposal flow (6 steps)
-    ├── Dashboard.jsx         # Admin dashboard with table
+    ├── ProposalFlow.jsx      # Interactive proposal flow (6 steps, confetti, audio)
+    ├── Dashboard.jsx         # Admin dashboard (login, response list, delete)
     └── PublicLanding.jsx     # Landing page
 ```
 
