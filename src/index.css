@@ -594,27 +594,6 @@ label {
   width: 100%;
 }
 
-/* Delete button */
-.delete-btn {
-  background: #ff7675;
-  color: white;
-  border: none;
-  padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem);
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-out);
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 2.5vw, 1rem);
-  touch-action: manipulation;
-}
-
-.delete-btn:hover {
-  background: #d63031;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(214, 48, 49, 0.3);
-}
-
 /* Floating Sound Toggle (fixed so it stays visible on scroll) */
 .sound-toggle-btn {
   position: fixed;
@@ -963,154 +942,26 @@ label {
 }
 
 /* ═══════════════════════════════════════════════════
-   Dashboard
+   Dashboard — Glassmorphism Design
+   Matches app's glass-container design language
    ═══════════════════════════════════════════════════ */
 
 .dashboard-container {
   max-width: var(--max-width-dashboard);
   width: 90%;
-  background: rgba(253, 242, 248, 0.6);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1.5px solid rgba(219, 39, 119, 0.15);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 2px solid var(--glass-border);
   border-radius: var(--glass-radius);
-  box-shadow: var(--shadow-card);
-  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card), var(--glass-inset-shadow);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 4vw, 3rem);
   margin: auto;
   z-index: 10;
+  text-align: left;
   transition: background var(--duration-normal) var(--ease-out),
               border-color var(--duration-normal) var(--ease-out);
 }
-
-.table-responsive {
-  overflow-x: auto;
-  margin-top: 1.5rem;
-  border-radius: 20px;
-  border: 1.5px solid rgba(219, 39, 119, 0.1);
-  box-shadow: 0 8px 30px rgba(219, 39, 119, 0.06);
-  background: transparent;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  background: transparent;
-}
-
-th, td {
-  padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid rgba(219, 39, 119, 0.1);
-  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-  font-family: var(--font-body);
-  background: transparent;
-}
-
-th {
-  background-color: rgba(219, 39, 119, 0.1);
-  color: var(--primary);
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  font-family: var(--font-heading);
-  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-td {
-  color: var(--text);
-  font-weight: 500;
-  background: transparent;
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tr:hover td {
-  background-color: rgba(219, 39, 119, 0.06);
-}
-
-/* ═══════════════════════════════════════════════════
-   Global Footer — sits naturally below scrollable content
-   ═══════════════════════════════════════════════════ */
-
-.global-footer {
-  width: 100%;
-  flex-shrink: 0;
-  padding: 0.6rem 1rem 0.8rem;
-  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
-  color: var(--text-muted);
-  opacity: 0.55;
-  font-weight: 600;
-  text-align: center;
-  font-family: var(--font-body);
-  pointer-events: auto;
-  letter-spacing: 0.3px;
-  background: var(--background);
-  border-top: 1px solid var(--border);
-}
-
-.global-footer a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 700;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.global-footer a:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
-}
-
-/* ── Inline Emoji Icons (modern SVG replacements) ── */
-.emoji-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 1px;
-  color: var(--primary);
-}
-
-/* ═══════════════════════════════════════════════════
-   Animations
-   ═══════════════════════════════════════════════════ */
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.35);
-  }
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 18px 45px rgba(225, 29, 72, 0.65);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.35);
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-   Icon sizing overrides
-   ═══════════════════════════════════════════════════ */
-
-.glass-container > div:first-of-type svg:not(.btn-yes svg):not(.btn-no svg) {
-  width: clamp(60px, 12vw, 75px) !important;
-  height: clamp(60px, 12vw, 75px) !important;
-}
-
-.glass-container > div:first-of-type svg[style*="drop-shadow"] {
-  width: clamp(80px, 15vw, 100px) !important;
-  height: clamp(80px, 15vw, 100px) !important;
-}
-
-/* ═══════════════════════════════════════════════════
-   Responsive Adjustments
-   ═══════════════════════════════════════════════════ */
-
-/* ═══════════════════════════════════════════════════
-   Dashboard — Modern Responsive Design
-   ═══════════════════════════════════════════════════ */
 
 .dashboard-header {
   display: flex;
@@ -1118,6 +969,11 @@ tr:hover td {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 1.5rem;
+}
+
+.dashboard-header p {
+  width: auto;
+  margin-bottom: 0;
 }
 
 .dashboard-actions {
@@ -1129,7 +985,7 @@ tr:hover td {
 .dashboard-error {
   color: var(--destructive);
   margin-top: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-align: center;
   font-weight: 600;
   padding: 1rem 1.5rem;
@@ -1200,7 +1056,7 @@ tr:hover td {
   font-family: var(--font-heading);
 }
 
-/* Desktop table */
+/* ── Desktop table ── */
 .desktop-only {
   display: block;
 }
@@ -1209,7 +1065,69 @@ tr:hover td {
   display: none;
 }
 
-/* Delete button modern */
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  font-family: var(--font-body);
+}
+
+th {
+  color: var(--primary);
+  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: rgba(219, 39, 119, 0.06);
+}
+
+td {
+  color: var(--text);
+  font-weight: 500;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: rgba(219, 39, 119, 0.04);
+}
+
+.td-name {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.td-date {
+  font-weight: 800;
+}
+
+.td-time {
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.td-muted {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ── Delete button ── */
 .delete-btn {
   background: rgba(225, 29, 72, 0.08);
   color: var(--destructive);
@@ -1235,42 +1153,22 @@ tr:hover td {
   box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
 }
 
-/* Table styling */
-.td-name {
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.td-date {
-  font-weight: 800;
-}
-
-.td-time {
-  font-style: italic;
-  margin-left: 4px;
-}
-
-.td-muted {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* Mobile response cards */
+/* ── Mobile response cards ── */
 .response-card {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(219, 39, 119, 0.1);
-  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 2px solid var(--glass-border);
+  border-radius: 24px;
   padding: 1.25rem;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 16px rgba(219, 39, 119, 0.05);
+  box-shadow: var(--shadow-card);
   transition: all var(--duration-normal) var(--ease-out);
 }
 
 .response-card:hover {
-  border-color: rgba(219, 39, 119, 0.3);
-  box-shadow: 0 8px 24px rgba(219, 39, 119, 0.1);
+  border-color: var(--secondary);
+  box-shadow: var(--shadow-card), 0 0 20px rgba(219, 39, 119, 0.08);
 }
 
 .card-header {
@@ -1279,7 +1177,7 @@ tr:hover td {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(219, 39, 119, 0.1);
+  border-bottom: 1.5px solid var(--border);
 }
 
 .card-name {
@@ -1340,14 +1238,14 @@ tr:hover td {
 .card-footer {
   margin-top: 0.8rem;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(219, 39, 119, 0.08);
+  border-top: 1px solid var(--border);
   font-size: 0.85rem;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 /* ═══════════════════════════════════════════════════
-   Step Progress Indicator — Modern Design
+   Step Progress Indicator
    ═══════════════════════════════════════════════════ */
 
 .step-progress {
@@ -1358,13 +1256,13 @@ tr:hover td {
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
-  border: 1.5px solid rgba(219, 39, 119, 0.12);
-  box-shadow: 0 8px 28px rgba(219, 39, 119, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid var(--glass-border);
+  box-shadow: var(--shadow-card);
   z-index: 1001;
   pointer-events: none;
 }
@@ -1379,7 +1277,7 @@ tr:hover td {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(219, 39, 119, 0.12);
+  background: var(--border);
   transition: all 0.4s var(--ease-spring);
   position: relative;
 }
@@ -1399,7 +1297,7 @@ tr:hover td {
 .step-connector {
   width: 16px;
   height: 2px;
-  background: rgba(219, 39, 119, 0.12);
+  background: var(--border);
   border-radius: 1px;
   transition: background 0.4s var(--ease-out);
 }
@@ -1424,7 +1322,7 @@ tr:hover td {
 }
 
 /* ═══════════════════════════════════════════════════
-   Responsive — Dashboard & Step Progress
+   Responsive
    ═══════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
@@ -1484,7 +1382,6 @@ tr:hover td {
   }
 }
 
-/* Landscape mode adjustments */
 @media (max-height: 500px) and (orientation: landscape) {
   .glass-container {
     padding: 1rem 1.5rem;
@@ -1506,11 +1403,19 @@ tr:hover td {
   }
 }
 
-/* Dark mode for new dashboard elements */
+/* ═══════════════════════════════════════════════════
+   Dark Mode — Dashboard
+   ═══════════════════════════════════════════════════ */
+
 @media (prefers-color-scheme: dark) {
+  .dashboard-container {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
   .response-card {
-    background: rgba(45, 18, 30, 0.6);
-    border-color: rgba(219, 39, 119, 0.15);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
   }
 
   .response-card:hover {
@@ -1518,7 +1423,7 @@ tr:hover td {
   }
 
   .card-header {
-    border-bottom-color: rgba(219, 39, 119, 0.12);
+    border-bottom-color: var(--border);
   }
 
   .card-delete-btn {
@@ -1531,17 +1436,16 @@ tr:hover td {
   }
 
   .step-progress {
-    background: rgba(45, 18, 30, 0.85);
-    border-color: rgba(219, 39, 119, 0.18);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
   }
 
   .step-dot {
-    background: rgba(219, 39, 119, 0.2);
+    background: var(--border);
   }
 
   .step-connector {
-    background: rgba(219, 39, 119, 0.2);
+    background: var(--border);
   }
 
   .step-connector.completed {
@@ -1559,8 +1463,7 @@ tr:hover td {
   }
 
   .table-responsive {
-    border-color: rgba(219, 39, 119, 0.15);
-    background: transparent;
+    border-color: var(--border);
   }
 
   th {
@@ -1569,10 +1472,81 @@ tr:hover td {
 
   td {
     color: var(--text);
-    background: transparent;
   }
 
   tr:hover td {
     background-color: rgba(219, 39, 119, 0.06);
   }
+}
+
+/* ═══════════════════════════════════════════════════
+   Global Footer
+   ═══════════════════════════════════════════════════ */
+
+.global-footer {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+  color: var(--text-muted);
+  opacity: 0.55;
+  font-weight: 600;
+  text-align: center;
+  font-family: var(--font-body);
+  pointer-events: auto;
+  letter-spacing: 0.3px;
+  background: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.global-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.global-footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* ═══════════════════════════════════════════════════
+   Animations
+   ═══════════════════════════════════════════════════ */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.35);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 18px 45px rgba(225, 29, 72, 0.65);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.35);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   Icon sizing overrides
+   ═══════════════════════════════════════════════════ */
+
+.glass-container > div:first-of-type svg:not(.btn-yes svg):not(.btn-no svg) {
+  width: clamp(60px, 12vw, 75px) !important;
+  height: clamp(60px, 12vw, 75px) !important;
+}
+
+.glass-container > div:first-of-type svg[style*="drop-shadow"] {
+  width: clamp(80px, 15vw, 100px) !important;
+  height: clamp(80px, 15vw, 100px) !important;
+}
+
+.emoji-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 1px;
+  color: var(--primary);
 }
