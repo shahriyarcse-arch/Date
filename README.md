@@ -121,7 +121,7 @@ This project is deployed on Vercel. To deploy your own fork:
 
 - Click the floating gear icon (⚙️) in the bottom-right corner of the proposal screen
 - Enter the passcode to access the admin panel
-- **Default passcode**: `5040`
+- The passcode is set via the `VITE_ADMIN_PASSCODE` environment variable
 
 ---
 
