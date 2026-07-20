@@ -4,12 +4,16 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
 let supabase = null;
+let supabaseInitError = null;
 if (supabaseUrl && supabaseAnonKey) {
   try {
     supabase = createClient(supabaseUrl, supabaseAnonKey);
   } catch (error) {
+    supabaseInitError = error;
     console.error('Failed to initialize Supabase client:', error);
   }
+} else {
+  supabaseInitError = new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY in .env file');
 }
 
 function generateShortId(length = 6) {
@@ -77,6 +81,16 @@ export const db = {
     
     if (error) throw error;
     return true;
+  },
+
+  // Check if Supabase is configured and initialized
+  isConfigured() {
+    return supabase !== null;
+  },
+
+  // Get the init error message (if any) for diagnostics
+  getInitError() {
+    return supabaseInitError ? supabaseInitError.message : null;
   },
 
   // ─── Proposals Table (for unique short links) ───

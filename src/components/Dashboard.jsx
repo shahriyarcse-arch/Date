@@ -42,6 +42,7 @@ export default function Dashboard({ onBack }) {
   const [error, setError] = useState('');
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [supabaseStatus, setSupabaseStatus] = useState(null); // null = unchecked, true = ok, false = error
 
   // Securely retrieve passcode from environment variables, fallback to 5040 for local dev if not set
   const CORRECT_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE || '5040';
@@ -59,15 +60,34 @@ export default function Dashboard({ onBack }) {
   const fetchResponses = async () => {
     setLoading(true);
     setError('');
+    
+    // First check Supabase connectivity
+    if (!db.isConfigured()) {
+      setSupabaseStatus(false);
+      setError('Cannot connect: ' + (db.getInitError() || 'Supabase not configured. Check .env file.'));
+      setLoading(false);
+      return;
+    }
+    
     try {
       const data = await db.getResponses();
       setResponses(data);
+      setSupabaseStatus(true);
     } catch (err) {
       console.error('Failed to fetch responses:', err);
-      setError('Failed to load responses. Check console for details.');
+      setError('Database error: ' + (err.message || 'Unknown error'));
     }
     setLoading(false);
   };
+
+  // Check Supabase status on mount
+  useEffect(() => {
+    if (!db.isConfigured()) {
+      setSupabaseStatus(false);
+    } else {
+      setSupabaseStatus(true);
+    }
+  }, []);
 
   // Fetch immediately when authenticated, and auto-refresh every 5s
   useEffect(() => {
@@ -120,6 +140,13 @@ export default function Dashboard({ onBack }) {
                 autoFocus
               />
               {error && <p style={{ color: '#ff0a54', fontSize: '1.2rem', marginBottom: '2rem', fontWeight: 600 }}>{error}</p>}
+              
+              {/* Show Supabase diagnostic before login */}
+              {supabaseStatus === false && (
+                <p style={{ color: 'var(--warning, #f59e0b)', fontSize: '1.1rem', marginBottom: '2rem', fontWeight: 600, textAlign: 'center' }}>
+                  ⚠️ {db.getInitError() || 'Database not configured. Responses will not show.'}
+                </p>
+              )}
               
               <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
                 <motion.button 
